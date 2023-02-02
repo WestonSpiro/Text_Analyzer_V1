@@ -1,0 +1,83 @@
+#!/usr/bin/env python3
+#Text Analyzer
+#Written by Weston Spiro for the OSSSSC
+print("Welcome To The Text Analyzer  V1!")
+print()
+filename = input("Please enter file name: ")
+fn = open(filename, "r")
+print()
+#punctuation removal & case adjustment
+str_fn = fn.read()
+str_fn = str_fn.replace(".", "")
+str_fn = str_fn.replace(",", "")
+str_fn = str_fn.replace("!", "")
+str_fn = str_fn.replace("?", "")
+str_fn = str_fn.replace("\\", "")
+str_fn = str_fn.replace("*", "")
+str_fn = str_fn.replace("[", "")
+str_fn = str_fn.replace("]", "")
+str_fn = str_fn.replace("(", "")
+str_fn = str_fn.replace(")", "")
+str_fn = str_fn.replace("{", "")
+str_fn = str_fn.replace("}", "")
+str_fn = str_fn.replace("-", "")
+str_fn = str_fn.replace(";", "")
+str_fn = str_fn.replace(":", "")
+str_fn = str_fn.replace("/", "")
+str_fn = str_fn.replace("$", "")
+str_fn = str_fn.replace("%", "")
+str_fn = str_fn.replace("'", "")
+str_fn = str_fn.replace("#", "")
+str_fn = str_fn.replace("1", "")
+str_fn = str_fn.replace("2", "")
+str_fn = str_fn.replace("3", "")
+str_fn = str_fn.replace("4", "")
+str_fn = str_fn.replace("5", "")
+str_fn = str_fn.replace("6", "")
+str_fn = str_fn.replace("7", "")
+str_fn = str_fn.replace("8", "")
+str_fn = str_fn.replace("9", "")
+str_fn = str_fn.replace("0", "")
+str_fn = str_fn.replace("&", "")
+str_fn = str_fn.replace('"', '')
+str_fn = str_fn.replace("\`", "")
+str_fn = str_fn.strip()
+str_fn = str_fn.lower()
+#initialize line counter, split text & loop through lines
+line_counter = 0
+lines = str_fn.split("\n")
+for line in lines:
+    line_counter += 1
+print("Total Lines: ", line_counter)
+print()
+#initialize word counter & dictionary and loop through text to create dictionary entries
+word_counter = 0
+word_dict = {}
+word_list = str_fn.split(" ")
+for word in word_list:
+    word_counter += 1
+    if word in word_dict:
+        word_dict[word] += 1
+    else:
+        word_dict[word] = 1
+print("Total Words: ", word_counter)
+print()
+print("Word List:")
+print(sorted(word_dict.items()))
+#initialize letter counter & dictionary
+letter_counter = 0
+letter_dict = {}
+for letter in str_fn:
+    letter_counter += 1
+    if letter in letter_dict:
+        letter_dict[letter] += 1
+    else:
+        letter_dict[letter] = 1
+print()
+print("Total Letters: ", letter_counter)
+print()
+print("Letter List:")
+print(sorted(letter_dict.items()))
+print()
+print("Thanks for using the Text Analyzer!")
+print()
